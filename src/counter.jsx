@@ -4,7 +4,7 @@ import { increment, decrement, incrementByAmount } from "./counterSlice";
 
 import "./styles/counter.css";
 
-export function Counter() {
+export default function Counter() {
   const [amount, setAmount] = useState(5);
 
   const count = useSelector((state) => state.counter.value);
@@ -12,6 +12,7 @@ export function Counter() {
 
   return (
     <div className="counter">
+      <h1>Sync Action</h1>
       <div>{count}</div>
       <button onClick={() => dispatch(increment())}>+</button>
       <button onClick={() => dispatch(decrement())}>-</button>
