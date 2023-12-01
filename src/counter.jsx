@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { increment, decrement, incrementByAmount } from "./counterSlice";
+import { fetchAllPosts } from "./postsSlice";
 
 import "./styles/counter.css";
 
@@ -8,7 +9,12 @@ export default function Counter() {
   const [amount, setAmount] = useState(5);
 
   const count = useSelector((state) => state.counter.value);
+  const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchAllPosts());
+  }, []);
 
   return (
     <div className="counter">
@@ -25,6 +31,9 @@ export default function Counter() {
       />
       <br />
       <button onClick={() => dispatch(incrementByAmount(amount))}>+</button>
+      {posts.loading && <p>Loading...</p>}
+      {!posts.loading && posts.error ? <p>Error: {posts.error}</p> : null}
+      <p>{`First post: ${posts.posts[0].title}`}</p>
     </div>
   );
 }
