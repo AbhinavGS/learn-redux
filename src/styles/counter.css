@@ -1,6 +1,7 @@
 .counter {
-  height: 100%;
-  margin-top: 50%;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
 }
 
 .counter > div {

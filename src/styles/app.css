@@ -1,9 +1,10 @@
 .app {
-  border: 1px solid;
-  position: absolute;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  text-align: center;
+  height: 95vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app > h1 {
+  align-self: flex-start;
 }
